@@ -1,0 +1,28 @@
+name: 'AWS Lambda Deploy Function'
+description: 'Deploy a Function to a Lambda through Github Actions'
+author: 'zeagord'
+branding:
+  icon: 'layers'
+  color: 'black'
+inputs:
+  package:
+    description: 'Jar or Zip package of the lambda'
+    default: ''
+  function-name:
+    description: 'Name of the function'
+    default: ''
+  AWS_SECRET_KEY:
+    description: 'AWS secret key'
+    default: ''
+  AWS_SECRET_ID:
+    description: 'AWS secret key ID'
+    default: ''
+  AWS_REGION:
+    description: 'AWS region'
+    default: ''
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'index.js'

@@ -1,0 +1,26 @@
+{
+  "name": "aws-lambda-deploy-function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeagord/aws-lambda-deploy-function.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeagord/aws-lambda-deploy-function/issues"
+  },
+  "homepage": "https://github.com/zeagord/aws-lambda-deploy-function#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0",
+    "aws-sdk": "^2.614.0",
+    "fs": "0.0.1-security"
+  }
+}
