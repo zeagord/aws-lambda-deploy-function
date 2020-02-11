@@ -32,7 +32,7 @@ try {
 
 
   let update = false;
-  lambda.getFunction({ FunctionName: functionName }, (err, data)  => {
+  lambda.getFunctionConfiguration({ FunctionName: functionName }, (err, data)  => {
     console.error(err);
     console.log(data);
     if (!err) {
