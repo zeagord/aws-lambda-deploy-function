@@ -9,6 +9,7 @@ try {
   const artifact = core.getInput('artifact');
   const runTime = core.getInput('runtime');
   const handler = core.getInput('handler');
+  const role = core.getInput('role');
 
   const AWS_SECRET_KEY = core.getInput('AWS_SECRET_KEY');
   const AWS_SECRET_ID = core.getInput('AWS_SECRET_ID');
@@ -29,20 +30,45 @@ try {
       logger: console,
   });
 
-  const params = {
-    FunctionName: functionName,
-    Publish: true,
-    Runtime: runTime,
-    Handler: handler,
-    ZipFile: zipBuffer,
-  };
 
-  lambda.updateFunctionCode(params, err => {
+  let update = false;
+  lambda.getFunction({ FunctionName: functionName }, (err, data)  => {
+    console.error(err);
+    console.log(data);
+    if (!err) {
+      update = true
+    }
+  });
+
+  if (update) {
+    const params = {
+      FunctionName: functionName,
+      Publish: true,
+      Runtime: runTime,
+      Handler: handler,
+      ZipFile: zipBuffer,
+      Role: role,
+    };
+    lambda.createFunction(params, err => {
       if (err) {
           console.error(err);
-          core.setFailed(err)
+          core.setFailed(err);
       }
   });
+  } else {
+    const params = {
+      FunctionName: functionName,
+      Publish: true,
+      ZipFile: zipBuffer,
+    };
+    lambda.updateFunctionCode(params, err => {
+      if (err) {
+          console.error(err);
+          core.setFailed(err);
+      }
+  });
+  }
+  
 
 } catch (error) {
   core.setFailed(error.message);

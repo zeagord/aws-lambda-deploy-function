@@ -9,7 +9,7 @@ inputs:
     description: 'Jar or Zip package of the lambda'
     default: ''
   function-name:
-    description: 'Name of the function'
+    description: 'Name of the Lambda function'
     default: ''
   runtime:
     description: 'Runtime fo the Lambda, Java11 or Node11'
