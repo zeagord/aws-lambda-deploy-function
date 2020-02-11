@@ -10,6 +10,7 @@ try {
   const runTime = core.getInput('runtime');
   const handler = core.getInput('handler');
   const role = core.getInput('role');
+  const type = core.getInput('type');
 
   const AWS_SECRET_KEY = core.getInput('AWS_SECRET_KEY');
   const AWS_SECRET_ID = core.getInput('AWS_SECRET_ID');
@@ -31,16 +32,7 @@ try {
   });
 
 
-  let update = false;
-  lambda.getFunctionConfiguration({ FunctionName: functionName }, (err, data)  => {
-    console.error(err);
-    console.log(data);
-    if (err && err.code!=='ResourceNotFoundException') {
-      update = true
-    }
-  });
-
-  if (update) {
+   if (type === 'create') {
     const params = {
       FunctionName: functionName,
       Publish: true,
