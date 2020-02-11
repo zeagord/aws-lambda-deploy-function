@@ -35,7 +35,7 @@ try {
   lambda.getFunctionConfiguration({ FunctionName: functionName }, (err, data)  => {
     console.error(err);
     console.log(data);
-    if (!err) {
+    if (err && err.code!=='ResourceNotFoundException') {
       update = true
     }
   });
