@@ -2,14 +2,20 @@ name: 'AWS Lambda Deploy Function'
 description: 'Deploy a Function to a Lambda through Github Actions'
 author: 'zeagord'
 branding:
-  icon: 'layers'
-  color: 'black'
+  icon: 'cloud'
+  color: 'green'
 inputs:
-  package:
+  artifact:
     description: 'Jar or Zip package of the lambda'
     default: ''
   function-name:
     description: 'Name of the function'
+    default: ''
+  runtime:
+    description: 'Runtime fo the Lambda, Java11 or Node11'
+    default: ''
+  handler:
+    description: 'Name of the Handler'
     default: ''
   AWS_SECRET_KEY:
     description: 'AWS secret key'
@@ -22,7 +28,7 @@ inputs:
     default: ''
 outputs:
   time: # id of output
-    description: 'The time we greeted you'
+    description: 'Lambda is deployed'
 runs:
   using: 'node12'
   main: 'index.js'
