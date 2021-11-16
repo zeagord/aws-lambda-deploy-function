@@ -20,7 +20,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^2.1.0",
-    "aws-sdk": "^2.614.0",
+    "aws-sdk": "^2.814.0",
     "fs": "0.0.1-security"
   }
 }
